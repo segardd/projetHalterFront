@@ -30,11 +30,11 @@ export class CompetitorsServiceService {
     }).valueChanges
   }
 
-  getCompetitorFromAPIalter(): Promise<void | Competitor[]> {
+  getCompetitorFromAPIalter(): Promise<Competitor[]> {
     return DAOAPIFactory.getInstance().getCompetitorDAO().findall([
       '_id',
       'name',
       'firstname'
-    ],Competitor)
+    ])
   }
 }

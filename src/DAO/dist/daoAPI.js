@@ -55,6 +55,7 @@ var daoAPI = /** @class */ (function () {
             //var data:any = gqlManager.getData(myQuery)
             //console.log("data: "+data)
             var result = gqlManager.getData(myQuery).then(function (data) {
+                console.log("data in daoAPI: " + data);
                 resolve(data.data);
             })["catch"](function (error) {
                 console.error("error: " + error);

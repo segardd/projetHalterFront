@@ -67,7 +67,9 @@ var ListeCompetitorComponent = /** @class */ (function () {
             }
             var _this = this;
             return __generator(this, function (_a) {
-                this.competitorService.getCompetitorFromAPIalter().then(function (data) { _this.competitors = data.CompetitorMany; });
+                this.competitorService.getCompetitorFromAPIalter().then(function (data) {
+                    _this.competitors = new Promise(function (resolve) { resolve(data); });
+                });
                 yop(this);
                 return [2 /*return*/];
             });

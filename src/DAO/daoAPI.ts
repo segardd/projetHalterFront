@@ -63,6 +63,7 @@ export abstract class daoAPI<T extends Object> implements dao<T>{
             //var data:any = gqlManager.getData(myQuery)
             //console.log("data: "+data)
             var result = gqlManager.getData(myQuery).then(data => {
+                console.log("data in daoAPI: "+data)
                 resolve(<T[]>data.data)
             }).catch( error => {
                 console.error("error: "+error);

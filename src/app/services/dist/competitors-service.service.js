@@ -12,7 +12,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.CompetitorsServiceService = void 0;
 var core_1 = require("@angular/core");
-var Competitor_1 = require("../../models/Competitor");
 var apollo_angular_1 = require("apollo-angular");
 var DAOAPIFactory_1 = require("src/DAO/DAOAPIFactory");
 var CompetitorsServiceService = /** @class */ (function () {
@@ -29,7 +28,7 @@ var CompetitorsServiceService = /** @class */ (function () {
             '_id',
             'name',
             'firstname'
-        ], Competitor_1.Competitor);
+        ]);
     };
     CompetitorsServiceService = __decorate([
         core_1.Injectable({

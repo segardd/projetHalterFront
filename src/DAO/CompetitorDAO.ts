@@ -1,5 +1,7 @@
 import {daoAPI} from './daoAPI';
-import {Competitor} from '../models/Competitor'
+import {Competitor} from '../models/Competitor';
+import {dao} from './dao';
+import { DAOAPIFactory } from './DAOAPIFactory';
 export class CompetitorDAO extends daoAPI<Competitor>{
     private static instance: CompetitorDAO;
 
@@ -12,5 +14,9 @@ export class CompetitorDAO extends daoAPI<Competitor>{
             CompetitorDAO.instance = new CompetitorDAO;
         }
         return CompetitorDAO.instance;
+    }
+
+    public findall(query: any[]):Promise<Competitor[]>{
+        return <Promise<Competitor[]>>super.findall(query,Competitor).then((data: any)=>{return data.CompetitorMany})
     }
 }

@@ -1,6 +1,6 @@
 <p>liste-competitor works!</p>
-{{ competitors.CompetitorMany | json }}
-<ul *ngFor="let competitor of (competitors.CompetitorMany)">
+{{ competitors | async | json }}
+<ul *ngFor="let competitor of (competitors | async)">
     <li>{{ competitor.name }}</li>
 </ul>
 <span *ngIf="error != ''">{{ error }}</span>

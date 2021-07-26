@@ -9,5 +9,5 @@ export interface dao<T>{
 
     saveall(objects: T[]): void;
 
-    findall(query: Object, type:{new (): T}):Promise<void | T[]>;
+    findall(query: Object, type?:{new (): T}):Promise<T[]>;
 }

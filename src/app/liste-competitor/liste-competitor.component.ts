@@ -16,7 +16,8 @@ export class ListeCompetitorComponent implements OnInit {
   constructor(private competitorService: CompetitorsServiceService) { }
 
   async ngOnInit(){
-    <Promise<Competitor[]>>this.competitorService.getCompetitorFromAPIalter().then(data =>{this.competitors = data.CompetitorMany})
+    <Promise<Competitor[]>>this.competitorService.getCompetitorFromAPIalter().then((data:any) =>{
+    this.competitors = new Promise((resolve)=>{resolve(data)})})
   
       async function yop(variable:any){
         var result:Competitor[] = await variable.competitorService.getCompetitorFromAPIalter().CompetitorMany
