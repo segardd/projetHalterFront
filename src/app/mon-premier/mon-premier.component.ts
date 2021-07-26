@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Competitor } from '../models/Competitor';
+import { Competitor } from '../../models/Competitor';
 import { CompetitorsServiceService } from '../services/competitors-service.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class MonPremierComponent implements OnInit {
   constructor(private competitorService: CompetitorsServiceService) { }
 
   ngOnInit(): void {
-    this.allCompetitors = this.competitorService.allCompetitors;
+   // this.allCompetitors = this.competitorService.allCompetitors;
 
   }
 

@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Competitor } from '../models/Competitor';
+import { Observable } from 'rxjs';
+import { Competitor } from '../../models/Competitor';
+import { HttpClient } from '@angular/common/http';
+import { Apollo, ApolloBase, gql } from 'apollo-angular';
+import { DAOAPIFactory } from 'src/DAO/DAOAPIFactory';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompetitorsServiceService {
-  allCompetitors: Competitor[] = [];
-  constructor() {
-    let competitor: Competitor = {
-      name: "name",
-      firstname: "firsname",
-      birthday: new Date(Date.now()),
-      club: "SCHAM"
-    }
-    var person = new Competitor;
-    for(var i=0; i < 4; i++){
-      person = competitor
-      person.setName(person.getName().concat(i.toString()));
-      person.setFirstname(person.getFirstname().concat(i.toString()));
 
-      this.allCompetitors.push(person);
-      
-    }
-    this.allCompetitors
-   }
+@Injectable()
+export class CompetitorsServiceService {
+
+  constructor(private apollo: Apollo) {
+  }
+
+  getCompetitorFromAPI(): Observable<any> {
+    return this.apollo.watchQuery<any>({
+      query: gql`{
+        CompetitorMany{
+        name
+        firstname
+        birthday
+        clubInfo{
+          name
+        }
+        }
+      }`,
+    }).valueChanges
+  }
+
+  getCompetitorFromAPIalter(): Promise<void | Competitor[]> {
+    return DAOAPIFactory.getInstance().getCompetitorDAO().findall([
+      '_id',
+      'name',
+      'firstname'
+    ],Competitor)
+  }
 }
